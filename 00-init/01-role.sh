@@ -1,7 +1,7 @@
 aws iam create-role --path / \
 --role-name lattice-workshop-role \
 --description "Role used by VPC Lattice Cloud9 environment" \
---assume-role-policy-document file:///trust.json
+--assume-role-policy-document file://trust.json
 
 
 
