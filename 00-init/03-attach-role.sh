@@ -1,5 +1,10 @@
+C9_IDS=$(aws cloud9 list-environments | jq -r '.environmentIds | join(" ")')
+CLOUD9_EC2=$(aws cloud9 describe-environments --environment-ids "${C9_IDS}" | jq -r '.environments[] | select(.name == "LatticeCloud9") | .id')
+
+sleep 60
+
 CLOUD9_EC2_ID=$(aws ec2 describe-instances --region "${AWS_REGION}" \
---filters "Name=tag:aws:cloud9:environment,Values=${C9_PID}" \
+--filters "Name=tag:aws:cloud9:environment,Values=${CLOUD9_EC2}" \
 --query "Reservations[*].Instances[*].InstanceId" --output text)
 
 aws ec2 associate-iam-instance-profile --instance-id "${CLOUD9_EC2_ID}" \
