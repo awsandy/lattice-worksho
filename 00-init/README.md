@@ -1,3 +1,53 @@
+## Stack LatticeBaseInfraWithAPIServer
+
+Stack deploys
+2 instances: LatticeWorkshop Rates LatticeWorkshop Payments (remove 22 0/0 rule)
+sg allow 10 and 169.254.0.0/16
+Instance profile
+Keypair
+Payments ASG, LT
+Rates ASG, LT
+
+Log group, bucket
+
+VPC's (all 10.0.0.0/16)
+
+LatticeWorkshop Clients                 IGW, NATGW
+LatticeWorkshop Rates       (ec2)       IGW, NATGW rates-sg
+LatticeWorkshop Payments    (ec2)       IGW, payments-sg
+LatticeWorkshop Reservations(lambda)    IGW, reservations-sg, subnets, 
+
+
+
+Lambda policy and role
+Log group for lambda
+
+
+Payments ALB, Listener, Target group
+
+
+
+
+------
+netstat -nap | grep dummy
+systemctl start dummy-service
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 source ./env.sh
 
 ## deploy stack
