@@ -29,6 +29,10 @@ resource "aws_vpclattice_auth_policy" "example" {
 }
 
 
+#### policy data
+
+
+
 
 
 
