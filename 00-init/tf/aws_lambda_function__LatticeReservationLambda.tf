@@ -4,6 +4,10 @@ resource "aws_lambda_function" "LatticeReservationLambda" {
   architectures = [
     "x86_64",
   ]
+# delete issue workaround
+  replace_security_groups_on_destroy = true
+#
+
   function_name = "LatticeReservationLambda"
   handler       = "index.lambda_handler"
   lifecycle {

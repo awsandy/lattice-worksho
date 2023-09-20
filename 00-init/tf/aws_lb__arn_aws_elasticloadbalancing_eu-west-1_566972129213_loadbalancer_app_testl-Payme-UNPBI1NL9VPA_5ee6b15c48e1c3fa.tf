@@ -19,8 +19,8 @@ resource "aws_lb" "arn_aws_elasticloadbalancing_eu-west-1_566972129213_loadbalan
     aws_security_group.sg-08f0a156dbeb9724b.id,
   ]
   subnets = [
-    aws_subnet.subnet-083f84ab40f5df076.id,
-    aws_subnet.subnet-0b30aa46e410c903d.id,
+    aws_subnet.payments-pub2.id,
+    aws_subnet.payments-pub1.id,
   ]
   tags                       = {}
   tags_all                   = {}
