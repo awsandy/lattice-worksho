@@ -5,7 +5,7 @@ resource "aws_lambda_function" "LatticeReservationLambda" {
     "x86_64",
   ]
 # delete issue workaround
-  replace_security_groups_on_destroy = true
+  #replace_security_groups_on_destroy = true
 #
 
   function_name = "LatticeReservationLambda"

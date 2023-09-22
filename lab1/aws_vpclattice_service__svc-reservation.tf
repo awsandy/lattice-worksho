@@ -6,3 +6,7 @@ resource "aws_vpclattice_service" "svc-01140bc6b2d1ae15b" {
   tags      = {}
   tags_all  = {}
 }
+
+output "svc-reservation-dns" {
+value=aws_vpclattice_service.svc-01140bc6b2d1ae15b.dns_entry[0].domain_name
+}

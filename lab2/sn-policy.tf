@@ -1,5 +1,5 @@
 resource "aws_vpclattice_auth_policy" "sn" {
-  resource_identifier = data.aws_vpclattice_service_network.example.arn
+  resource_identifier = data.aws_vpclattice_service_network.svn.arn
   policy = jsonencode({
     Version = "2012-10-17"
     Statement = [

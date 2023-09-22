@@ -1,0 +1,15 @@
+resource "null_resource" "destroy_lambda" {
+  triggers = {
+    always_run = timestamp()
+  }
+  #depends_on = [aws_eks_node_group.ng1]
+  provisioner "local-exec" {
+    on_failure  = fail
+    when        = destroy
+    interpreter = ["/bin/bash", "-c"]
+    command     = <<EOT
+        ./destroy-lambda.sh LatticeReservationLambda
+        echo "************************************************************************************"
+     EOT
+  }
+}

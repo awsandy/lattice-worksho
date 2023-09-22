@@ -1,68 +1,42 @@
 resource "aws_vpclattice_auth_policy" "example" {
   resource_identifier = data.aws_ssm_parameter.svc-parking.arn
-  policy = jsonencode({
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Principal": {
-                            "AWS": "<‘LatticeWorkshop InstanceClient1’ IAM ARN>"
-            },
-            "Action": "vpc-lattice-svcs:Invoke",
-                     "Resource": "<ARN of Parking Service>/rates"
-        },
-        {
-            "Effect": "Allow",
-            "Principal": {
-                    "AWS": "<‘LatticeWorkshop InstanceClient2’ IAM ARN>"
-            },
-            "Action": "vpc-lattice-svcs:Invoke",
-                    "Resource": "<ARN of Parking Service>/payments",
-            "Condition": {
-                "StringEquals": {
-                    "vpc-lattice-svcs:RequestMethod": "GET"
-                }
-            }
-        }
-    ]
-})
+  policy = data.aws_iam_policy_document.example.json
 }
-
 
 #### policy data
+data "aws_iam_policy_document" "example" {
+  statement {
+    sid = "1"
+    actions = ["vpc-lattice-svcs:Invoke"]
+    resources = [
+        format("%s/rates",data.aws_ssm_parameter.svc-parking.value)
+    ]
+    principals {
+      type        = "AWS"
+      identifiers = [data.aws_ssm_parameter.client1-instance-arn.value]
+    }
+  }
 
+  statement {
+    sid = "2"
+    actions = ["vpc-lattice-svcs:Invoke"]
+    resources = [
+        format("%s/payments",data.aws_ssm_parameter.svc-parking.value)
+    ]
+    principals {
+      type        = "AWS"
+      identifiers = [data.aws_ssm_parameter.client2-instance-arn.value]
+    }
 
+    condition {
+            test = "StringEquals"
+            variable = "vpc-lattice-svcs:RequestMethod"
+            values = ["GET"]
+    }
+  }
 
-
-
-
-
-
-
-{
-            "Version": "2012-10-17",
-                "Statement": [
-                    {
-                        "Effect": "Allow",
-                        "Principal": {
-                            "AWS": "<‘LatticeWorkshop InstanceClient1’ IAM ARN>"
-                        },
-                        "Action": "vpc-lattice-svcs:Invoke",
-                        "Resource": "<ARN of Parking Service>/rates"
-                    },
-                    {
-                        "Effect": "Allow",
-                        "Principal": {
-                            "AWS": "<‘LatticeWorkshop InstanceClient2’ IAM ARN>"
-                        },
-                        "Action": "vpc-lattice-svcs:Invoke",
-                        "Resource": "<ARN of Parking Service>/payments",
-                        "Condition": {
-                            "StringEquals": {
-                                "vpc-lattice-svcs:RequestMethod": "GET"
-                            }
-                        }
-                    }
-                ]
 }
+
+   
+
 

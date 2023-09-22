@@ -31,3 +31,6 @@ resource "aws_ssm_parameter" "svc-reservation" {
     workshop = "VPC Lattice Workshop"
   }
 }
+
+
+

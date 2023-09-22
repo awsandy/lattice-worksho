@@ -6,3 +6,8 @@ variable "profile" {
   type    = string
   default = "default"
 }
+
+variable "fn-name" {
+  type    = string
+  default = "LatticeReservationLambda"
+}

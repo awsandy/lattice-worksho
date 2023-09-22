@@ -6,3 +6,7 @@ resource "aws_vpclattice_service" "svc-06f9423290d1e2bb1" {
   tags      = {}
   tags_all  = {}
 }
+
+output "svc-parking-dns" {
+value=aws_vpclattice_service.svc-06f9423290d1e2bb1.dns_entry[0].domain_name
+}
