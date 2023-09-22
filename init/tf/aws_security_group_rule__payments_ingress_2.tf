@@ -2,9 +2,9 @@
 # aws_security_group_rule.sg-08f0a156dbeb9724b_ingress_1:
 resource "aws_security_group_rule" "sg-08f0a156dbeb9724b_ingress_1" {
   cidr_blocks = [
-    "169.254.0.0/16",
+    "10.0.0.0/16",
   ]
-  description       = "Allow Lattice"
+  description       = "Allow local cidr"
   from_port         = 0
   prefix_list_ids   = []
   protocol          = "-1"
@@ -12,3 +12,5 @@ resource "aws_security_group_rule" "sg-08f0a156dbeb9724b_ingress_1" {
   to_port           = 0
   type              = "ingress"
 }
+
+

@@ -5,4 +5,5 @@ resource "aws_security_group" "sg-08f0a156dbeb9724b" {
   tags        = {}
   tags_all    = {}
   vpc_id      = aws_vpc.payments.id
+  name = "payments-sg"
 }
