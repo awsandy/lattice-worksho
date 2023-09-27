@@ -8,7 +8,8 @@ resource "aws_launch_template" "rates" {
   name                    = "LatticeWorkshop-rates-launch-template"
   tags                    = {}
   tags_all                = {}
-  user_data               = "IyEvYmluL2Jhc2gKc3VkbyBzdQp3Z2V0IGh0dHBzOi8vZDNmaDg0MW9laWhpc2guY2xvdWRmcm9udC5uZXQvZHVtbXktc2VydmljZQpjaG1vZCAreCBkdW1teS1zZXJ2aWNlCmVjaG8gJCdbVW5pdF1cbkRlc2NyaXB0aW9uPWR1bW15LXNlcnZpY2VcbkFmdGVyPW5ldHdvcmsudGFyZ2V0XG5cbltTZXJ2aWNlXVxuVHlwZT1zaW1wbGVcbldvcmtpbmdEaXJlY3Rvcnk9L1xuRXhlY1N0YXJ0PS9kdW1teS1zZXJ2aWNlXG5FeGVjUmVsb2FkPS9iaW4va2lsbCAtSFVQICRNQUlOUElEXG5SZXN0YXJ0PWFsd2F5c1xuU3RhbmRhcmRPdXRwdXQ9c3lzbG9nXG5TdGFuZGFyZEVycm9yPXN5c2xvZ1xuU3lzbG9nSWRlbnRpZmllcj1kdW1teS1zZXJ2aWNlXG5Vc2VyPXJvb3Rcbkdyb3VwPXJvb3RcbkVudmlyb25tZW50PVNFUlZJQ0VfTkFNRT0icmF0ZXMiXG5cbltJbnN0YWxsXVxuV2FudGVkQnk9bXVsdGktdXNlci50YXJnZXRcbicgPiAvZXRjL3N5c3RlbWQvc3lzdGVtL2R1bW15LXNlcnZpY2Uuc2VydmljZQpzeXN0ZW1jdGwgc3RhcnQgZHVtbXktc2VydmljZQo="
+  #user_data               = "IyEvYmluL2Jhc2gKc3VkbyBzdQp3Z2V0IGh0dHBzOi8vZDNmaDg0MW9laWhpc2guY2xvdWRmcm9udC5uZXQvZHVtbXktc2VydmljZQpjaG1vZCAreCBkdW1teS1zZXJ2aWNlCmVjaG8gJCdbVW5pdF1cbkRlc2NyaXB0aW9uPWR1bW15LXNlcnZpY2VcbkFmdGVyPW5ldHdvcmsudGFyZ2V0XG5cbltTZXJ2aWNlXVxuVHlwZT1zaW1wbGVcbldvcmtpbmdEaXJlY3Rvcnk9L1xuRXhlY1N0YXJ0PS9kdW1teS1zZXJ2aWNlXG5FeGVjUmVsb2FkPS9iaW4va2lsbCAtSFVQICRNQUlOUElEXG5SZXN0YXJ0PWFsd2F5c1xuU3RhbmRhcmRPdXRwdXQ9c3lzbG9nXG5TdGFuZGFyZEVycm9yPXN5c2xvZ1xuU3lzbG9nSWRlbnRpZmllcj1kdW1teS1zZXJ2aWNlXG5Vc2VyPXJvb3Rcbkdyb3VwPXJvb3RcbkVudmlyb25tZW50PVNFUlZJQ0VfTkFNRT0icmF0ZXMiXG5cbltJbnN0YWxsXVxuV2FudGVkQnk9bXVsdGktdXNlci50YXJnZXRcbicgPiAvZXRjL3N5c3RlbWQvc3lzdGVtL2R1bW15LXNlcnZpY2Uuc2VydmljZQpzeXN0ZW1jdGwgc3RhcnQgZHVtbXktc2VydmljZQo="
+  user_data              = filebase64sha256("lt-0692233e69efb7d98.sh")
   vpc_security_group_ids = [
     aws_security_group.sg-04c2eaaaf6f61e5a1.id,
   ]

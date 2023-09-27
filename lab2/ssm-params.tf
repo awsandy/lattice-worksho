@@ -12,10 +12,7 @@ data "aws_ssm_parameter" "svc-reservation" {
 
 }
 
-data "aws_ssm_parameter" "client1-instance-arn" {
-  name        = "/vpclattice/workshop/client1-instance-arn"
-}
 
-data "aws_ssm_parameter" "client2-instance-arn" {
-  name        = "/vpclattice/workshop/client2-instance-arn"
+data "aws_ssm_parameter" "instance-role-arn" {
+  name        = "/vpclattice/workshop/instance-role-arn"
 }

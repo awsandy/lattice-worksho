@@ -87,3 +87,14 @@ resource "aws_ssm_parameter" "client2-instance-arn" {
     workshop = "VPC Lattice Workshop"
   }
 }
+
+resource "aws_ssm_parameter" "instance-role-arn" {
+  name        = "/vpclattice/workshop/instance-role-arn"
+  description = "The arn instance role"
+  type        = "String"
+
+  value=aws_iam_role.r-testlatticebaseinfrawithapiserver-SSMRole-1CDQNUHP1D78M.arn
+  tags = { 
+  workshop = "VPC Lattice Workshop"
+  }
+}
