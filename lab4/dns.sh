@@ -45,17 +45,17 @@ aws route53 associate-vpc-with-hosted-zone --hosted-zone-id "${PRIVATE_HOSTED_ZO
 
 export SVC_FQDN=$ASSETS_FQDN
 export LATTICE_FQDN="${ASSETS_LATTICE_FQDN}"
-envsubst < cname.json > assets-dns.json
+envsubst < scripts/cname.json > assets-dns.json
 aws route53 change-resource-record-sets --hosted-zone-id $PRIVATE_HOSTED_ZONE_ID --region $AWS_REGION --change-batch file://assets-dns.json
 
 export SVC_FQDN=$CARTS_FQDN
 export LATTICE_FQDN=${CART_LATTICE_FQDN}
-envsubst < cname.json > cart-dns.json
+envsubst < scripts/cname.json > cart-dns.json
 aws route53 change-resource-record-sets --hosted-zone-id $PRIVATE_HOSTED_ZONE_ID --region $AWS_REGION --change-batch file://cart-dns.json
 
 export SVC_FQDN="$CATALOG_FQDN"
 export LATTICE_FQDN="${CATALOG_LATTICE_FQDN}"
-envsubst < cname.json > catalog-dns.json
+envsubst < scripts/cname.json > catalog-dns.json
 aws route53 change-resource-record-sets --hosted-zone-id $PRIVATE_HOSTED_ZONE_ID --region $AWS_REGION --change-batch file://catalog-dns.json
 
 
