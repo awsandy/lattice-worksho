@@ -1,55 +1,9 @@
 ---
-
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: assets
-  labels:
-    app.kubernetes.io/created-by: retail-store-sample
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: carts
-  labels:
-    app.kubernetes.io/created-by: retail-store-sample
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: catalog
-  labels:
-    app.kubernetes.io/created-by: retail-store-sample
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: ui
-  labels:
-    app.kubernetes.io/created-by: retail-store-sample
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: orders
-  labels:
-    app.kubernetes.io/created-by: retail-store-sample
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: checkout
-  labels:
-    app.kubernetes.io/created-by: retail-store-sample
-
----
-
 # Source: catalog/templates/serviceaccount.yaml
 apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: catalog
-  namespace: catalog
   labels:
     helm.sh/chart: catalog-0.0.1
     app.kubernetes.io/name: catalog
@@ -63,7 +17,6 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: catalog-db
-  namespace: catalog
 data:
   username: "Y2F0YWxvZw=="
   password: "YzE5ZGVwTTRaTmg4OHBkUA=="
@@ -73,7 +26,6 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: catalog
-  namespace: catalog
 data:
   DB_ENDPOINT: catalog-mysql:3306
   DB_READ_ENDPOINT: catalog-mysql:3306
@@ -84,7 +36,6 @@ apiVersion: v1
 kind: Service
 metadata:
   name: catalog-mysql
-  namespace: catalog
   labels:
     helm.sh/chart: catalog-0.0.1
     app.kubernetes.io/name: catalog
@@ -108,7 +59,6 @@ apiVersion: v1
 kind: Service
 metadata:
   name: catalog
-  namespace: catalog
   labels:
     helm.sh/chart: catalog-0.0.1
     app.kubernetes.io/name: catalog
@@ -134,7 +84,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: catalog
-  namespace: catalog
   labels:
     helm.sh/chart: catalog-0.0.1
     app.kubernetes.io/name: catalog
@@ -223,7 +172,6 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: catalog-mysql
-  namespace: catalog
   labels:
     helm.sh/chart: catalog-0.0.1
     app.kubernetes.io/name: catalog
@@ -278,13 +226,11 @@ spec:
         emptyDir: {}
 
 ---
-
 # Source: ui/templates/serviceaccount.yaml
 apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: ui
-  namespace: ui
   labels:
     helm.sh/chart: ui-0.0.1
     app.kubernetes.io/name: ui
@@ -292,26 +238,21 @@ metadata:
     app.kubernetes.io/component: service
     app.kuberneres.io/owner: retail-store-sample
     app.kubernetes.io/managed-by: Helm
-
 ---
-
 # Source: ui/templates/configmap.yml
 apiVersion: v1
 kind: ConfigMap
 metadata:
   name: ui
-  namespace: ui
 data:
   
-  ENDPOINTS_CATALOG: http://catalog
-
+  ENDPOINTS_CATALOG: http://catalog-c1-lattice.lattice.io
 ---
 # Source: ui/templates/service.yaml
 apiVersion: v1
 kind: Service
 metadata:
   name: ui
-  namespace: ui
   labels:
     helm.sh/chart: ui-0.0.1
     app.kubernetes.io/name: ui
@@ -331,14 +272,12 @@ spec:
     app.kubernetes.io/instance: ui
     app.kubernetes.io/component: service
     app.kuberneres.io/owner: retail-store-sample
-
 ---
 # Source: ui/templates/deployment.yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: ui
-  namespace: ui
   labels:
     helm.sh/chart: ui-0.0.1
     app.kubernetes.io/name: ui
@@ -422,7 +361,6 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: catalog
-  namespace: catalog
   labels:
     helm.sh/chart: catalog-0.0.1
     app.kubernetes.io/name: catalog
@@ -436,7 +374,6 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: catalog-db
-  namespace: catalog
 data:
   username: "Y2F0YWxvZw=="
   password: "amJrcHh0Y3pkZHhqU21EaA=="
@@ -446,7 +383,6 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: catalog
-  namespace: catalog
 data:
   DB_ENDPOINT: catalog-mysql:3306
   DB_READ_ENDPOINT: catalog-mysql:3306
@@ -457,7 +393,6 @@ apiVersion: v1
 kind: Service
 metadata:
   name: catalog-mysql
-  namespace: catalog
   labels:
     helm.sh/chart: catalog-0.0.1
     app.kubernetes.io/name: catalog
@@ -481,7 +416,6 @@ apiVersion: v1
 kind: Service
 metadata:
   name: catalog
-  namespace: catalog
   labels:
     helm.sh/chart: catalog-0.0.1
     app.kubernetes.io/name: catalog
@@ -507,7 +441,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: catalog
-  namespace: catalog
   labels:
     helm.sh/chart: catalog-0.0.1
     app.kubernetes.io/name: catalog
@@ -596,7 +529,6 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: catalog-mysql
-  namespace: catalog
   labels:
     helm.sh/chart: catalog-0.0.1
     app.kubernetes.io/name: catalog
@@ -656,7 +588,6 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: carts
-  namespace: carts
   labels:
     helm.sh/chart: carts-0.0.1
     app.kubernetes.io/name: carts
@@ -670,7 +601,6 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: carts
-  namespace: carts
 data:
   SPRING_PROFILES_ACTIVE: dynamodb
   CARTS_DYNAMODB_TABLENAME: Items
@@ -685,7 +615,6 @@ apiVersion: v1
 kind: Service
 metadata:
   name: carts-dynamodb
-  namespace: carts
   labels:
     helm.sh/chart: carts-0.0.1
     app.kubernetes.io/name: carts
@@ -709,7 +638,6 @@ apiVersion: v1
 kind: Service
 metadata:
   name: carts
-  namespace: carts
   labels:
     helm.sh/chart: carts-0.0.1
     app.kubernetes.io/name: carts
@@ -735,7 +663,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: carts
-  namespace: carts
   labels:
     helm.sh/chart: carts-0.0.1
     app.kubernetes.io/name: carts
@@ -816,7 +743,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: carts-dynamodb
-  namespace: carts
   labels:
     helm.sh/chart: carts-0.0.1
     app.kubernetes.io/name: carts
@@ -852,7 +778,6 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: orders
-  namespace: orders
   labels:
     helm.sh/chart: orders-0.0.1
     app.kubernetes.io/name: orders
@@ -866,7 +791,6 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: orders-db
-  namespace: orders
 data:
   username: "b3JkZXJz"
   password: "Wk5QSHgwQ1lSWTBnUWg2WQ=="
@@ -876,7 +800,6 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: orders-rabbitmq
-  namespace: orders
 data:
 ---
 # Source: orders/templates/configmap.yml
@@ -884,7 +807,6 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: orders
-  namespace: orders
 data:
   SPRING_PROFILES_ACTIVE: mysql,rabbitmq
   SPRING_DATASOURCE_READER_URL: jdbc:mariadb://orders-mysql:3306/orders
@@ -896,7 +818,6 @@ apiVersion: v1
 kind: Service
 metadata:
   name: orders-mysql
-  namespace: orders
   labels:
     helm.sh/chart: orders-0.0.1
     app.kubernetes.io/name: orders
@@ -920,7 +841,6 @@ apiVersion: v1
 kind: Service
 metadata:
   name: orders-rabbitmq
-  namespace: orders
   labels:
     helm.sh/chart: orders-0.0.1
     app.kubernetes.io/name: orders
@@ -948,7 +868,6 @@ apiVersion: v1
 kind: Service
 metadata:
   name: orders
-  namespace: orders
   labels:
     helm.sh/chart: orders-0.0.1
     app.kubernetes.io/name: orders
@@ -974,7 +893,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: orders
-  namespace: orders
   labels:
     helm.sh/chart: orders-0.0.1
     app.kubernetes.io/name: orders
@@ -1077,7 +995,6 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: orders-mysql
-  namespace: orders
   labels:
     helm.sh/chart: orders-0.0.1
     app.kubernetes.io/name: orders
@@ -1136,7 +1053,6 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: orders-rabbitmq
-  namespace: orders
   labels:
     helm.sh/chart: orders-0.0.1
     app.kubernetes.io/name: orders
@@ -1182,7 +1098,6 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: checkout
-  namespace: checkout
   labels:
     helm.sh/chart: checkout-0.0.1
     app.kubernetes.io/name: checkout
@@ -1196,7 +1111,6 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: checkout
-  namespace: checkout
 data:
   REDIS_URL: redis://checkout-redis:6379
   ENDPOINTS_ORDERS: http://orders:80
@@ -1206,7 +1120,6 @@ apiVersion: v1
 kind: Service
 metadata:
   name: checkout-redis
-  namespace: checkout
   labels:
     helm.sh/chart: checkout-0.0.1
     app.kubernetes.io/name: checkout
@@ -1230,7 +1143,6 @@ apiVersion: v1
 kind: Service
 metadata:
   name: checkout
-  namespace: checkout
   labels:
     helm.sh/chart: checkout-0.0.1
     app.kubernetes.io/name: checkout
@@ -1256,7 +1168,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: checkout
-  namespace: checkout
   labels:
     helm.sh/chart: checkout-0.0.1
     app.kubernetes.io/name: checkout
@@ -1334,7 +1245,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: checkout-redis
-  namespace: checkout
   labels:
     helm.sh/chart: checkout-0.0.1
     app.kubernetes.io/name: checkout
@@ -1370,7 +1280,6 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: assets
-  namespace: assets
   labels:
     helm.sh/chart: assets-0.0.1
     app.kubernetes.io/name: assets
@@ -1384,7 +1293,6 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: assets
-  namespace: assets
 data:
   PORT: '8080'
 ---
@@ -1393,7 +1301,6 @@ apiVersion: v1
 kind: Service
 metadata:
   name: assets
-  namespace: assets
   labels:
     helm.sh/chart: assets-0.0.1
     app.kubernetes.io/name: assets
@@ -1419,7 +1326,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: assets
-  namespace: assets
   labels:
     helm.sh/chart: assets-0.0.1
     app.kubernetes.io/name: assets
@@ -1492,7 +1398,6 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: ui
-  namespace: ui
   labels:
     helm.sh/chart: ui-0.0.1
     app.kubernetes.io/name: ui
@@ -1506,21 +1411,19 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: ui
-  namespace: ui
 data:
   
-  ENDPOINTS_CHECKOUT: http://checkout-${CLUSTER1_NAME}.lattice.io
-  ENDPOINTS_ORDERS: http://orders-${CLUSTER1_NAME}.lattice.io
-  ENDPOINTS_ASSETS: http://assets-${CLUSTER1_NAME}.lattice.io
-  ENDPOINTS_CARTS: http://cart-${CLUSTER1_NAME}.lattice.io
-  ENDPOINTS_CATALOG: http://catalog-${CLUSTER1_NAME}.lattice.io
+  ENDPOINTS_CATALOG: http://catalog-c1-lattice.lattice.io
+  ENDPOINTS_CARTS: http://carts-c1-lattice.lattice.io
+  ENDPOINTS_CHECKOUT: http://checkout-c1-lattice.lattice.io
+  ENDPOINTS_ORDERS: http://orders
+  ENDPOINTS_ASSETS: http://assets-c1-lattice.lattice.io
 ---
 # Source: ui/templates/service.yaml
 apiVersion: v1
 kind: Service
 metadata:
-  name: ui-lb
-  namespace: ui
+  name: ui
   labels:
     helm.sh/chart: ui-0.0.1
     app.kubernetes.io/name: ui
@@ -1546,7 +1449,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: ui
-  namespace: ui
   labels:
     helm.sh/chart: ui-0.0.1
     app.kubernetes.io/name: ui
