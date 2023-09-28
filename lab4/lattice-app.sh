@@ -4,6 +4,8 @@ export LATTICE_DOMAIN_NAME="lattice.io"
 export CLUSTER1_NAME=$(terraform output -raw cluster_name)
 export VPC2_NAME='LatticeWorkshop Rates VPC'
 export VPC2_FILTER="Name=tag:Name,Values='$VPC2_NAME'"
+aws ssm get-parameter --name "/vpclattice/workshop/vpc-clients" --with-decryption --query 'Parameter.Value' --output text 
+aws ssm get-parameter --name "/vpclattice/workshop/vpc-rates" --with-decryption --query 'Parameter.Value' --output text
 
 export ASSETS_HOSTNAME="assets-${CLUSTER1_NAME}"
 export CART_HOSTNAME="carts-${CLUSTER1_NAME}"
