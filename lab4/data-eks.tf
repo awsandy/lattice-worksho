@@ -6,7 +6,8 @@ data "aws_iam_openid_connect_provider" "example" {
 
 
 data "aws_eks_cluster" "example" {
-  name = var.CLUSTER1_NAME
+  depends_on = [ module.eks, module.vpc]
+  name = module.eks.cluster_name
 }
 
 output "endpoint" {

@@ -38,7 +38,7 @@ echo $CART_LATTICE_FQDN
 echo $CATALOG_LATTICE_FQDN
 
 export VPC1_ID=$(aws ssm get-parameter --name "/vpclattice/workshop/vpc-clients" --with-decryption --query 'Parameter.Value' --output text)
-export VPC2_ID=$(aws ssm get-parameter --name "/vpclattice/workshop/cluster-vpcid" --with-decryption --query 'Parameter.Value' --output text)
+export VPC2_ID=$(aws ssm get-parameter --name "/vpclattice/workshop/cluster1_vpcid" --with-decryption --query 'Parameter.Value' --output text)
 
 PRIVATE_HOSTED_ZONE_ID=$(aws route53 create-hosted-zone --name "${LATTICE_DOMAIN_NAME}" --caller-reference "$(date +%Y%m%d%H%M%S)" --vpc VPCRegion="${AWS_REGION}",VPCId="${VPC1_ID}" --hosted-zone-config PrivateZone=true --query 'HostedZone.Id' --output text)
 aws route53 associate-vpc-with-hosted-zone --hosted-zone-id "${PRIVATE_HOSTED_ZONE_ID}" --vpc VPCRegion="${AWS_REGION}",VPCId="${VPC2_ID}"

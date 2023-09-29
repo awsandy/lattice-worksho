@@ -1,14 +1,14 @@
 {
   "Changes": [
       {
-          "Action": "DELETE",
+          "Action": "CREATE",
           "ResourceRecordSet": {
-              "Name": "",
+              "Name": "catalog-c1-lattice.lattice.io",
               "Type": "CNAME",
               "TTL": 60,
               "ResourceRecords": [
                   {
-                      "Value": ""
+                      "Value": "c1-lattice-catalog-default-0425308901ff19538.7d67968.vpc-lattice-svcs.eu-west-1.on.aws"
                   }
               ]
           }
