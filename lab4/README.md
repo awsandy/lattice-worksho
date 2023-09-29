@@ -6,7 +6,7 @@ terraform apply -auto-approve
 aws ecr-public get-login-password --region us-east-1 | helm registry login --username AWS --password-stdin public.ecr.aws
 export KUBE_CONFIG_PATH=~/.kube/config
 
-
+mv gateway.tf.sav gateway.tf 
 
 ./runapp.sh
 ./lattice-app.sh
