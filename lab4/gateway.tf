@@ -63,8 +63,8 @@ set {
 
 
 
-resource "kubernetes_manifest" "gateway-class" {
-  depends_on = [helm_release.gateway-api-controller]
-  manifest = yamldecode(file("./gatewayclass.yaml"))
-}
+#resource "kubernetes_manifest" "gateway-class" {
+#  depends_on = [helm_release.gateway-api-controller]
+#  manifest = yamldecode(file("./gatewayclass.yaml"))
+#}
 

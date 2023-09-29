@@ -1,10 +1,13 @@
+aws ecr-public get-login-password --region us-east-1 | helm registry login --username AWS --password-stdin public.ecr.aws
+export KUBE_CONFIG_PATH=~/.kube/config
 terraform init
 terraform apply -target="module.vpc" -auto-approve
 terraform apply -target="module.eks" -auto-approve
+terraform apply -target="module.karpenter" -auto-approve
 terraform apply -auto-approve
 
-aws ecr-public get-login-password --region us-east-1 | helm registry login --username AWS --password-stdin public.ecr.aws
-export KUBE_CONFIG_PATH=~/.kube/config
+kubectl apply -f gatewayclass.yaml
+
 
 mv gateway.tf.sav gateway.tf 
 
