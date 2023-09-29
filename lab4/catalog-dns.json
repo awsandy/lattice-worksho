@@ -1,0 +1,17 @@
+{
+  "Changes": [
+      {
+          "Action": "DELETE",
+          "ResourceRecordSet": {
+              "Name": "",
+              "Type": "CNAME",
+              "TTL": 60,
+              "ResourceRecords": [
+                  {
+                      "Value": ""
+                  }
+              ]
+          }
+      }
+  ]
+}

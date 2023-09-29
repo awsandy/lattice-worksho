@@ -23,7 +23,7 @@ echo $CHECKOUT_FQDN
 
 envsubst < scripts/rs-deploy-app-c1-var.yaml | kubectl apply -f -
 echo "--> up to 8m wait for app to start"
-kubectl wait --for=condition=available deployments --all --timeout=480s
+kubectl wait --for=condition=available deployments -- --timeout=480s
 echo "--> app started, deployments wait complete"
 kubectl get svc ui-lb -n ui
 # get elb url (port 80)

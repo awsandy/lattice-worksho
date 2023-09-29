@@ -7,16 +7,7 @@ resource "kubernetes_namespace_v1" "lattice-gateway" {
     
   }
 }
-
-## IRSA
-## iam-sa.tf
-
-
-
-
-
-
-
+# iam-sa.tf
 # create service account - with annotation to aws_iam_policy.lattice-inline-policy
 
 resource "kubernetes_service_account_v1" "gateway-api-controller" {
@@ -48,7 +39,7 @@ resource "helm_release" "gateway-api-controller" {
 
   set {
     name  = "clusterName"
-    value = module.eks.cluster_name
+    value = var.CLUSTER1_NAME
   }
 
   set {

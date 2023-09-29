@@ -9,7 +9,7 @@ variable "profile" {
 
 variable "CLUSTER1_NAME" {
   type    = string
-  default = "default"
+  default = "c1-lattice"
 }
 
 variable "CLUSTER2_NAME" {

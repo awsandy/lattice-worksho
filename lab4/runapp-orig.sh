@@ -26,37 +26,6 @@ echo $CATALOG_FQDN
 echo $CHECKOUT_FQDN
 echo $ORDERS_FQDN
 
-fil="deploy.yaml"
-echo "--> replace endpoints catalog"
-os=$(echo "ENDPOINTS_CATALOG: http:\/\/catalog")
-ns=$(echo "ENDPOINTS_CATALOG: http:\/\/${CATALOG_FQDN}")
-cmd=$(echo "sed -i'.orig' -e 's/$os/$ns/g' $fil")
-echo "$cmd"
-eval $cmd
-echo "--> replace endpoints assets"
-os=$(echo "ENDPOINTS_ASSETS: http:\/\/assets")
-ns=$(echo "ENDPOINTS_ASSETS: http:\/\/${ASSETS_FQDN}")
-cmd=$(echo "sed -i'.orig' -e 's/$os/$ns/g' $fil")
-echo "$cmd"
-eval $cmd
-echo "--> replace endpoints carts"
-os=$(echo "ENDPOINTS_CARTS: http:\/\/carts")
-ns=$(echo "ENDPOINTS_CARTS: http:\/\/${CARTS_FQDN}")
-cmd=$(echo "sed -i'.orig' -e 's/$os/$ns/g' $fil")
-echo "$cmd"
-eval $cmd
-echo "--> replace endpoints checkout"
-os=$(echo "ENDPOINTS_CHECKOUT: http:\/\/checkout")
-ns=$(echo "ENDPOINTS_CHECKOUT: http:\/\/${CHECKOUT_FQDN}")
-cmd=$(echo "sed -i'.orig' -e 's/$os/$ns/g' $fil")
-echo "$cmd"
-eval $cmd
-echo "--> replace endpoints orders"
-os=$(echo "ENDPOINTS_ORDERS: http:\/\/orders")
-ns=$(echo "ENDPOINTS_ORDERS: http:\/\/${ORDERS_FQDN}")
-cmd=$(echo "sed -i'.orig' -e 's/$os/$ns/g' $fil")
-echo "$cmd"
-eval $cmd
 grep ENDPOINTS_ deploy.yaml
 
 kubectl apply -f deploy.yaml

@@ -1,0 +1,17 @@
+{
+  "Changes": [
+      {
+          "Action": "CREATE",
+          "ResourceRecordSet": {
+              "Name": "",
+              "Type": "CNAME",
+              "TTL": 60,
+              "ResourceRecords": [
+                  {
+                      "Value": ""
+                  }
+              ]
+          }
+      }
+  ]
+}
