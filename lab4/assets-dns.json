@@ -8,7 +8,7 @@
               "TTL": 60,
               "ResourceRecords": [
                   {
-                      "Value": "c1-lattice-assets-default-0032993b6cb72983e.7d67968.vpc-lattice-svcs.eu-west-1.on.aws"
+                      "Value": "c1-lattice-assets-default-065c7c7e9e927c65d.7d67968.vpc-lattice-svcs.eu-west-1.on.aws"
                   }
               ]
           }

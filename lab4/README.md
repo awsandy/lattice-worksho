@@ -5,11 +5,9 @@ terraform apply -target="module.vpc" -auto-approve
 terraform apply -target="module.eks" -auto-approve
 terraform apply -target="module.karpenter" -auto-approve
 terraform apply -auto-approve
+#mv gateway.tf.sav gateway.tf 
 
 kubectl apply -f gatewayclass.yaml
-
-
-mv gateway.tf.sav gateway.tf 
 
 ./runapp.sh
 ./lattice-app.sh
