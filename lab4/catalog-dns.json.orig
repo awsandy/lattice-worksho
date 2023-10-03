@@ -3,7 +3,7 @@
       {
           "Action": "CREATE",
           "ResourceRecordSet": {
-              "Name": "",
+              "Name": "catalog-c1-lattice.lattice.io",
               "Type": "CNAME",
               "TTL": 60,
               "ResourceRecords": [

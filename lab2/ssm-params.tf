@@ -12,7 +12,6 @@ data "aws_ssm_parameter" "svc-reservation" {
 
 }
 
-
 data "aws_ssm_parameter" "instance-role-arn" {
   name        = "/vpclattice/workshop/instance-role-arn"
 }

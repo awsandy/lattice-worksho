@@ -19,6 +19,7 @@ resource "aws_iam_role" "r-testlatticebaseinfrawithapiserver-SSMRole-1CDQNUHP1D7
   managed_policy_arns = [
     format("arn:aws:iam::%s:policy/InvokeLatticePolicy", data.aws_caller_identity.current.account_id),
     "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore",
+    "arn:aws:iam::aws:policy/VPCLatticeReadOnlyAccess"
   ]
   max_session_duration = 3600
   name                 = "testlatticebaseinfrawithapiserver-SSMRole-1CDQNUHP1D78M"
