@@ -1,5 +1,5 @@
 trole=$(aws sts get-caller-identity --query Arn --output text  | cut -f2 -d"/")
-echo "apply lab2 terraform...."
+echo "apply lab2 terraform first...."
 AWS_SESSION_TOKEN=$(curl -s http://169.254.169.254/latest/meta-data/iam/security-credentials/$trole | jq -r '.Token')
 AWS_ACCESS_KEY_ID=$(curl -s http://169.254.169.254/latest/meta-data/iam/security-credentials/$trole | jq -r '.AccessKeyId')
 AWS_SECRET_ACCESS_KEY=$(curl -s http://169.254.169.254/latest/meta-data/iam/security-credentials/$trole | jq -r '.SecretAccessKey')
