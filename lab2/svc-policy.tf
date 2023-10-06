@@ -12,7 +12,7 @@ data "aws_iam_policy_document" "example" {
     ]
     principals {
       type        = "AWS"
-      identifiers = [data.aws_ssm_parameter.instance-role-arn.value]
+      identifiers = ["*"]
     }
   }
 
@@ -24,7 +24,7 @@ data "aws_iam_policy_document" "example" {
     ]
     principals {
       type        = "AWS"
-      identifiers = [data.aws_ssm_parameter.instance-role-arn.value]
+      identifiers = ["*"]
     }
 
     condition {
