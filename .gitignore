@@ -6,3 +6,5 @@ terraform*
 terraform.tfstate
 
 SEC.md
+lab1/terraform.tfstate
+lab1/terraform.tfstate.backup
