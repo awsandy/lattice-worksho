@@ -13,4 +13,11 @@ eksctl completion bash >>~/.bash_completion
 curl -L -o kubectl-cert-manager.tar.gz https://github.com/jetstack/cert-manager/releases/latest/download/kubectl-cert_manager-linux-amd64.tar.gz
 tar xzf kubectl-cert-manager.tar.gz
 sudo mv kubectl-cert_manager /usr/local/bin
+if [ ! $(which helm 2>/dev/null) ]; then
+  echo "helm"
+  wget -q https://get.helm.sh/helm-v3.11.3-linux-amd64.tar.gz >/dev/null
+  tar -zxf helm-v3.11.3-linux-amd64.tar.gz
+  sudo mv linux-amd64/helm /usr/local/bin/helm >/dev/null
+  rm -rf helm-v3.11.3-linux-amd64.tar.gz linux-amd64
+fi
 
