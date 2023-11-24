@@ -1,4 +1,5 @@
 resource "kubernetes_namespace_v1" "lattice-gateway" {
+  depends_on=["kubectl_manifest.karpenter_provisioner"]
   metadata {
     name = "aws-application-networking-system"
     labels = {
@@ -30,6 +31,7 @@ resource "kubernetes_service_account_v1" "gateway-api-controller" {
 
 
 resource "helm_release" "gateway-api-controller" {
+  depends_on=["helm_release.karpenter"]
   name       = "gateway-api-controller"
   repository = "oci://public.ecr.aws/aws-application-networking-k8s"
   #repository = "https://aws.github.io/eks-charts"
