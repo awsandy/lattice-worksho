@@ -1,1 +1,1 @@
-aws kms put-key-policy --key-id $1 --policy-name allow-account --policy file://key-policy.json
+aws kms put-key-policy --key-id $1 --policy-name allow_account --policy file://key-policy.json
