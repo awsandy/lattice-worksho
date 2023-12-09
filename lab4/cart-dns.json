@@ -3,12 +3,20 @@
       {
           "Action": "CREATE",
           "ResourceRecordSet": {
-              "Name": "carts-c1-lattice.lattice.io",
+              "Name": "carts-[33m╷[0m[0m
+[33m│[0m [0m[1m[33mWarning: [0m[0m[1mNo outputs found[0m
+[33m│[0m [0m
+[33m│[0m [0m[0mThe state file either has no outputs defined, or all the defined outputs are
+[33m│[0m [0mempty. Please define an output in your configuration with the `output`
+[33m│[0m [0mkeyword and run `terraform refresh` for it to become available. If you are
+[33m│[0m [0musing interpolation, please verify the interpolated value is not empty. You
+[33m│[0m [0mcan use the `terraform console` command to assist.
+[33m╵[0m[0m.lattice.io",
               "Type": "CNAME",
               "TTL": 60,
               "ResourceRecords": [
                   {
-                      "Value": "c1-lattice-carts-default-018513426319e50a7.7d67968.vpc-lattice-svcs.eu-west-1.on.aws"
+                      "Value": "null"
                   }
               ]
           }

@@ -1,6 +1,6 @@
-# aws_s3_bucket_server_side_encryption_configuration.b_superappsvcnetworklogs566972129213:
-resource "aws_s3_bucket_server_side_encryption_configuration" "b_superappsvcnetworklogs566972129213" {
-  bucket = aws_s3_bucket.b_superappsvcnetworklogs566972129213.id
+# aws_s3_bucket_server_side_encryption_configuration.b_superappsvcnetworklogs:
+resource "aws_s3_bucket_server_side_encryption_configuration" "b_superappsvcnetworklogs" {
+  bucket = aws_s3_bucket.b_superappsvcnetworklogs.id
 
   rule {
     bucket_key_enabled = false

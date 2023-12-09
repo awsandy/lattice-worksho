@@ -26,14 +26,14 @@ resource "aws_iam_policy" "p_Lattice-Lambda-Policy" {
             "logs:PutLogEvents",
           ]
           Effect     = "Allow"
-          "Resource" = "arn:aws:logs:eu-west-1:566972129213:log-group:/aws/lambda/LatticeReservationLambda:*"
+          "Resource" = format("arn:aws:logs:eu-west-1:%s:log-group:/aws/lambda/LatticeReservationLambda:*",data.aws_caller_identity.current.account_id)
         },
         {
           Action = [
             "logs:CreateLogGroup",
           ]
           Effect     = "Allow"
-          "Resource" = "arn:aws:logs:eu-west-1:566972129213:*"
+          "Resource" = format("arn:aws:logs:eu-west-1:%s:*",data.aws_caller_identity.current.account_id)
         },
       ]
       Version = "2012-10-17"

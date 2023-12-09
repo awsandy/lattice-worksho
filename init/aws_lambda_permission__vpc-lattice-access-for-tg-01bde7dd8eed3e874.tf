@@ -4,6 +4,6 @@ resource "aws_lambda_permission" "r_vpc-lattice-access-for-tg-01bde7dd8eed3e874"
   action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.LatticeReservationLambda.arn
   principal     = "vpc-lattice.amazonaws.com"
-  source_arn    = "arn:aws:vpc-lattice:eu-west-1:566972129213:targetgroup/tg-01bde7dd8eed3e874"
+  source_arn    = format("arn:aws:vpc-lattice:eu-west-1:%s:targetgroup/tg-01bde7dd8eed3e874",data.aws_caller_identity.current.account_id)
   statement_id  = "vpc-lattice-access-for-tg-01bde7dd8eed3e874"
 }

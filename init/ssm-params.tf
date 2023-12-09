@@ -2,7 +2,7 @@ resource "aws_ssm_parameter" "alb" {
   name        = "/vpclattice/workshop/alb"
   description = "The name of the alb"
   type        = "String"
-  value       = aws_lb.arn_aws_elasticloadbalancing_eu-west-1_566972129213_loadbalancer_app_testl-Payme-UNPBI1NL9VPA_5ee6b15c48e1c3fa.name
+  value       = aws_lb.arn_aws_elasticloadbalancing__loadbalancer_app_testl-Paym.name
 
   tags = {
     workshop = "VPC Lattice Workshop"

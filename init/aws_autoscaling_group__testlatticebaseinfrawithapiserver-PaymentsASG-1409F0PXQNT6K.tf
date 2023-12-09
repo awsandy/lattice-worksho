@@ -21,10 +21,10 @@ resource "aws_autoscaling_group" "testlatticebaseinfrawithapiserver-PaymentsASG-
   min_size                  = 1
   name                      = "testlatticebaseinfrawithapiserver-PaymentsASG-1409F0PXQNT6K"
   protect_from_scale_in     = false
-  service_linked_role_arn   = "arn:aws:iam::566972129213:role/aws-service-role/autoscaling.amazonaws.com/AWSServiceRoleForAutoScaling"
+  service_linked_role_arn   = format("arn:aws:iam::%s:role/aws-service-role/autoscaling.amazonaws.com/AWSServiceRoleForAutoScaling",data.aws_caller_identity.current.account_id)
   suspended_processes       = []
   target_group_arns = [
-    aws_lb_target_group.arn_aws_elasticloadbalancing_eu-west-1_566972129213_targetgroup_payments-target-group_8fa7228052d0bd8c.arn,
+    aws_lb_target_group.arn_aws_elasticloadbalancing__targetgroup_payments-target-group.arn,
   ]
   termination_policies = []
 
